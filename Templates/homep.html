@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("https://i.postimg.cc/9QD5K0cj/Runway-2023-07-03-T06-35-05-506-Z-Expand-Image.jpg"); 
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    h1 {
+      font-size: 50px;
+      font-family: "Arial Black", sans-serif;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+      text-transform: uppercase;
+    }
+    
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      margin: 40px auto;
+      max-width: 800px;
+    }
+    
+    .block {
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      color: #f00b0b;
+      cursor: pointer;
+      position: relative;
+      perspective: 1000px;
+      transition: transform 0.3s;
+      border: 6px solid #000000;
+      border-radius: 20px;
+    }
+    
+    .block:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .block::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      transform: translateZ(-100px);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .block:hover::before {
+      opacity: 1;
+    }
+    
+    .block h2 {
+      font-size: 32px;
+      font-weight: bolder;
+      margin-top: 120px;
+      z-index: 1;
+      -webkit-text-stroke: 1.25px rgb(255, 255, 255); 
+      -webkit-text-fill-color: #000000;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+    }
+  </style>
+  <script>
+    function setBackground() {
+        var date = new Date();
+        var hour = date.getHours();
+
+        if (hour >= 6 && hour < 18) {
+            document.body.style.backgroundImage = "url('https://i.postimg.cc/9QD5K0cj/Runway-2023-07-03-T06-35-05-506-Z-Expand-Image.jpg')";
+        } else {
+            document.body.style.backgroundImage = "url('https://i.postimg.cc/YCCq9tkX/Runway-2023-07-03-T06-26-01-545-Z-Expand-Image.jpg')"; 
+        }
+    }
+</script>
+</head>
+<body onload="setBackground()">
+  <div class="grid-container">
+    <div class="block" style="background-image: url('https://i.postimg.cc/wBG5BtPS/c1ade386-e951-4736-a25e-ea1312d8eb90.jpg');" onclick="redirectToAirBox();">
+      <h2>Air Quality</h2>
+    </div>
+    <script>
+      function redirectToAirBox() {
+        window.location.href = "{% url 'air_box' %}";
+      }
+    </script>
+    <div class="block" style="background-image: url('https://i.postimg.cc/yxzsbTkb/03244ec1-90f9-4090-89de-a3cb2464a314.jpg');" onclick="redirectToWaterPoll();">
+      <h2>Water Pollution Level</h2>
+    </div>
+    <script>
+      function redirectToWaterPoll() {
+        window.location.href = "{% url 'water_pollution' %}";
+      }
+    </script>
+    <div class="block" style="background-image: url('https://i.postimg.cc/CK3gR4Hx/93eeff67-1d7f-461e-b9eb-d6f5c5ac05c5.jpg');" onclick="redirectToDeforest();">
+      <h2>Deforestation Rate</h2>
+    </div>
+    <script>
+      function redirectToDeforest() {
+        window.location.href = "{% url 'deforestation_rate' %}";
+      }
+    </script>
+    <div class="block" style="background-image: url('https://i.postimg.cc/j5nHnxYC/545e8c12-3c53-4c94-8819-0d860c504509.jpg');" onclick="redirectToClim();">
+      <h2>Temperature Level</h2>
+    </div>
+    <script>
+      function redirectToClim() {
+        window.location.href = "{% url 'climate_change' %}";
+      }
+    </script>
+  </div>
+</body>
+</html>

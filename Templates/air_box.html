@@ -1,1 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background-color: #5b5b5b;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #333;
+      font-size: 32px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      margin-bottom: 80px;
+    }
+    
+    .input-group {
+      margin-bottom: 20px;
+    }
+    
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+      font-weight: bold;
+    }
+    
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    
+    .btn:hover {
+      background-color: #45a049;
+    }
+    
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f0f0f0;
+      color: #333;
+      font-weight: bold;
+      text-align: center;
+    }
 
+    .image-section {
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .image-section img {
+      display: inline-block;
+      max-width: 100%;
+      height: auto;
+      margin: 10px;
+      border-radius: 8px;
+    }
+
+    .image-section .row {
+      margin-bottom: 40px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="input-group">
+      <label for="aqi-input">Enter AQI Index:</label>
+      <input type="number" id="aqi-input" placeholder="Enter AQI Index" required>
+    </div>
+    <button class="btn" onclick="calculateAQICategory()">Calculate</button>
+    <div class="result" id="result-container"></div>
+  </div>
+  
+  <div class="image-section">
+    <h2>Some plots showing AQI trends in last few years</h2>
+    <div class="row">
+      <img src="https://i.postimg.cc/nV4GSTqq/predictions-1.png" alt="Preds">
+    </div>
+    <div class="row">
+      <img src="https://i.postimg.cc/MHpHDWyP/trend.png" alt="Trend">
+    </div>
+    <div class="row">
+      <img src="https://i.postimg.cc/2SVvYxLc/plot.png" alt="Plot">
+    </div>
+    <div class="row">
+      <img src="https://i.postimg.cc/cHsLxs5x/lastimg.png" alt="Components">
+    </div>
+  </div>
+
+  <script>
+    function calculateAQICategory() {
+      var aqiInput = document.getElementById("aqi-input");
+      var aqiIndex = parseInt(aqiInput.value);
+      
+      var resultContainer = document.getElementById("result-container");
+      var category = getAQICategory(aqiIndex);
+      
+      resultContainer.textContent = category;
+    }
+    
+    function getAQICategory(aqiIndex) {
+      if (aqiIndex <= 50) {
+        return "The air quality is excellent and ideal for your health. You can breathe easy and appreciate the clean and clear air. You can also take this opportunity to help maintain the good air quality by adopting eco-friendly habits such as planting trees, using renewable energy, and reducing waste.";
+      } else if (aqiIndex <= 100) {
+        return "The air quality is satisfactory and poses little or no risk to your health. You can freely engage in outdoor activities and enjoy the fresh air. However, you should still be mindful of the sources of air pollution and avoid them if possible. For example, avoid smoking or burning trash, and use public transportation or carpooling instead of driving.";
+      } else if (aqiIndex <= 200) {
+        return "The air quality is moderate and acceptable for most people, but may still pose some risks for those who are more sensitive to air pollution. You can enjoy outdoor activities, but be aware of the air quality changes and avoid prolonged exposure to polluted areas. If you have any respiratory conditions, follow your doctor’s advice and take your medication as prescribed.";
+      } else if (aqiIndex <= 300) {
+        return "The air quality is very low and may cause respiratory problems for sensitive groups such as children, elderly, and people with asthma. Limit your exposure to outdoor air and reduce physical exertion. If you have to go outside, wear a mask or use a scarf to cover your nose and mouth. Monitor your health and consult a doctor if you feel unwell.";
+      } else {
+        return "The air quality is extremely poor and hazardous for your health. Avoid any outdoor activities and stay indoors as much as possible. Use an air purifier or wear a mask if you have to go outside. Seek medical attention if you experience any symptoms such as difficulty in breathing, chest pain, coughing, or wheezing.";
+      }
+    }
+  </script>
+</body>
+</html>
